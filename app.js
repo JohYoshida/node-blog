@@ -1,7 +1,7 @@
 // app.js
 
 // require and instantiate express
-const app = require("express")()
+const app = require("express")();
 
 // fake posts to simulate a database
 const posts = [
@@ -28,33 +28,33 @@ const posts = [
     author: "Cody",
     title: "Events",
     body: "Blog post number 4"
-  },
-]
+  }
+];
 
 // set the view engine to EJS
-app.set("view engine", "ejs")
+app.set("view engine", "ejs");
 
 // blog home page
 app.get("/", (req, res) => {
   // render 'home.ejs' with the list of posts
-  res.render('home', {posts: posts})
-})
+  res.render('home', {posts: posts});
+});
 
 // blog post
 app.get("/post/:id", (req, res) => {
   // find the posts in the 'posts' array
   const post = posts.filter((post) => {
-    return post.id == req.params.id
-  })[0]
+    return post.id === req.params.id;
+  })[0];
 
   // render the 'post.ejs' template with the post content
   res.render("post", {
     author: post.author,
     title: post.title,
     body: post.body
-  })
-})
+  });
+});
 
-app.listen(8080)
+app.listen(8080);
 
 console.log("Listening on port 8080");
